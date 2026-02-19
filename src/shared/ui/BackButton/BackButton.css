@@ -1,0 +1,25 @@
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.back-button:hover {
+  color: var(--text-primary);
+}
+
+.back-button__arrow {
+  font-size: 16px;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.back-button:hover .back-button__arrow {
+  transform: translateX(-4px);
+}
