@@ -1,0 +1,20 @@
+.header {
+  text-align: center;
+  padding: 60px 0 48px;
+}
+
+.header__title {
+  font-family: var(--font-main);
+  font-size: 32px;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 8px;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.header__subtitle {
+  color: var(--text-muted);
+  font-size: 11px;
+  letter-spacing: 4px;
+}

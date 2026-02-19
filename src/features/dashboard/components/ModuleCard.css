@@ -1,0 +1,40 @@
+.module-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+}
+
+.module-card--disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.module-card__emoji {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.module-card__title {
+  font-family: var(--font-main);
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--text-primary);
+}
+
+.module-card__description {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+}
+
+.module-card__badge {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+}
