@@ -1,0 +1,23 @@
+.streak-display {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 1;
+}
+
+.streak-display__count {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--orange-primary);
+  letter-spacing: 1px;
+}
+
+.streak-display__label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 3px;
+}

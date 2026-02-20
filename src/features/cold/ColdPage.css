@@ -1,0 +1,33 @@
+.cold-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 32px 40px;
+  box-sizing: border-box;
+}
+
+/* ── Top bar ── */
+.cold-page__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  height: 48px;
+}
+
+/* ── Main body ── */
+.cold-page__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 48px;
+  gap: 48px;
+}
+
+/* ── Divider ── */
+.cold-page__divider {
+  width: 360px;
+  height: 1px;
+  background: var(--border-subtle);
+}
