@@ -11,7 +11,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Architecture
 
-Vite + React 18 + TypeScript (strict mode) SPA. Dark-themed health/lifestyle tracker with modular feature design.
+Vite + React 18 + TypeScript (strict mode) SPA. Dark-themed health/lifestyle tracker with modular feature design. tsconfig enables `noUnusedLocals`, `noUnusedParameters`, and `noUncheckedIndexedAccess` — all code must pass `tsc` with zero errors.
 
 **Path alias:** `@/*` maps to `src/*` (configured in both tsconfig.json and vite.config.ts).
 
@@ -32,6 +32,10 @@ Each feature lives in `src/features/<name>/` with:
 - `types/`, `config/` — as needed
 
 Routes are registered in `src/app/router.tsx`. Adding a module = create feature folder + add route + add card to Dashboard's modules array in `src/features/dashboard/Dashboard.tsx`.
+
+### i18n
+
+Bilingual (English / Russian). `src/shared/i18n/` contains `LanguageContext.tsx` (React context + `useLanguage` hook) and `translations.ts` (flat key-value maps). All user-facing strings go through the `t()` function from `useLanguage()`. Language preference stored in `hl_language`. When adding UI text, add keys to both `en` and `ru` in `translations.ts`.
 
 ### Design system
 
