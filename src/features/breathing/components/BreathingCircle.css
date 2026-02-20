@@ -1,0 +1,155 @@
+/* Container: fixed size, overflow visible so rings can extend */
+.breathing-circle {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Rings: absolutely centered */
+.breathing-circle__ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid;
+  transition:
+    width 1.5s cubic-bezier(0.23, 1, 0.32, 1),
+    height 1.5s cubic-bezier(0.23, 1, 0.32, 1),
+    border-color 1.5s ease,
+    opacity 1.5s ease,
+    box-shadow 1.5s ease;
+  pointer-events: none;
+}
+
+/* ── Default / Exhale state ── */
+.breathing-circle__ring--outer {
+  width: 340px;
+  height: 340px;
+  border-color: var(--border-subtle);
+  opacity: 0.4;
+}
+
+.breathing-circle__ring--mid {
+  width: 250px;
+  height: 250px;
+  border-color: var(--border-hover);
+  opacity: 0.6;
+}
+
+/* Core: the main visible circle */
+.breathing-circle__core {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-hover);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  z-index: 1;
+  transition:
+    width 1.5s cubic-bezier(0.23, 1, 0.32, 1),
+    height 1.5s cubic-bezier(0.23, 1, 0.32, 1),
+    border-color 1.5s ease,
+    box-shadow 1.5s ease,
+    opacity 1.5s ease;
+}
+
+/* ── IDLE ── */
+.breathing-circle[data-phase="idle"] .breathing-circle__ring--outer { opacity: 0.1; }
+.breathing-circle[data-phase="idle"] .breathing-circle__ring--mid   { opacity: 0.15; }
+.breathing-circle[data-phase="idle"] .breathing-circle__core        { opacity: 0.35; }
+
+/* ── INHALE — expand ── */
+.breathing-circle[data-phase="inhale"] .breathing-circle__ring--outer {
+  width: 420px;
+  height: 420px;
+  border-color: rgba(232, 116, 42, 0.2);
+  opacity: 1;
+}
+.breathing-circle[data-phase="inhale"] .breathing-circle__ring--mid {
+  width: 320px;
+  height: 320px;
+  border-color: rgba(232, 116, 42, 0.4);
+  opacity: 1;
+  box-shadow: 0 0 40px rgba(232, 116, 42, 0.12);
+}
+.breathing-circle[data-phase="inhale"] .breathing-circle__core {
+  width: 200px;
+  height: 200px;
+  border-color: var(--orange-primary);
+  box-shadow: 0 0 60px rgba(232, 116, 42, 0.3);
+}
+
+/* ── EXHALE — back to default (transitions handle it) ── */
+
+/* ── HOLD — subtle heartbeat pulse ── */
+.breathing-circle[data-phase="hold"] .breathing-circle__ring--outer {
+  border-color: rgba(232, 116, 42, 0.1);
+  opacity: 0.5;
+}
+.breathing-circle[data-phase="hold"] .breathing-circle__ring--mid {
+  border-color: rgba(232, 116, 42, 0.2);
+  opacity: 0.6;
+}
+.breathing-circle[data-phase="hold"] .breathing-circle__core {
+  border-color: rgba(232, 116, 42, 0.5);
+  animation: hold-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes hold-pulse {
+  0%, 100% { box-shadow: 0 0 12px rgba(232, 116, 42, 0.1); }
+  50%       { box-shadow: 0 0 32px rgba(232, 116, 42, 0.3); }
+}
+
+/* ── RECOVERY — maximum glow ── */
+.breathing-circle[data-phase="recovery"] .breathing-circle__ring--outer {
+  width: 460px;
+  height: 460px;
+  border-color: rgba(232, 116, 42, 0.18);
+  opacity: 1;
+}
+.breathing-circle[data-phase="recovery"] .breathing-circle__ring--mid {
+  width: 360px;
+  height: 360px;
+  border-color: rgba(232, 116, 42, 0.45);
+  opacity: 1;
+  box-shadow: 0 0 60px rgba(232, 116, 42, 0.2);
+}
+.breathing-circle[data-phase="recovery"] .breathing-circle__core {
+  width: 220px;
+  height: 220px;
+  border-color: var(--orange-primary);
+  box-shadow:
+    0 0 90px rgba(232, 116, 42, 0.45),
+    0 0 25px rgba(232, 116, 42, 0.15) inset;
+}
+
+/* ── Text inside core ── */
+.breathing-circle__label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  transition: color 1.5s ease;
+}
+
+.breathing-circle__counter {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--text-primary);
+  letter-spacing: 1px;
+}
+
+/* Orange label during active phases */
+.breathing-circle[data-phase="inhale"]   .breathing-circle__label,
+.breathing-circle[data-phase="recovery"] .breathing-circle__label { color: var(--orange-primary); }
+.breathing-circle[data-phase="hold"]     .breathing-circle__label { color: rgba(232, 116, 42, 0.7); }

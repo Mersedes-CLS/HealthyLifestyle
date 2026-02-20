@@ -1,0 +1,32 @@
+.round-indicator {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  min-height: 20px;
+}
+
+.round-indicator--hidden {
+  visibility: hidden;
+}
+
+.round-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--border-hover);
+  transition:
+    background 0.4s ease,
+    box-shadow 0.4s ease,
+    transform 0.4s ease;
+}
+
+.round-dot--active {
+  background: var(--orange-primary);
+  box-shadow: 0 0 10px rgba(232, 116, 42, 0.5);
+  transform: scale(1.25);
+}
+
+.round-dot--done {
+  background: rgba(232, 116, 42, 0.3);
+}

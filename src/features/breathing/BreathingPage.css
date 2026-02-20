@@ -1,0 +1,79 @@
+.breathing-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 32px 32px;
+  box-sizing: border-box;
+}
+
+/* ── Top bar ── */
+.breathing-page__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  height: 48px;
+}
+
+.breathing-page__top-end {
+  /* Mirror BackButton width to visually center the round indicator */
+  min-width: 60px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.breathing-page__preset-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ── Main body ── */
+.breathing-page__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+/* ── Bottom slot (hint / start button) ── */
+.breathing-page__bottom {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.breathing-page__start-btn {
+  padding: 14px 52px;
+  border-radius: 40px;
+  border: 1px solid var(--orange-primary);
+  background: transparent;
+  color: var(--orange-primary);
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+  animation: fadeUp 0.5s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+.breathing-page__start-btn:hover {
+  background: var(--orange-primary);
+  color: #0a0a0a;
+}
+
+.breathing-page__hint {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  animation: fadeIn 0.8s ease both;
+}

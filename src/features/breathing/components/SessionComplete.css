@@ -1,0 +1,123 @@
+.session-complete {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  animation: fadeUp 0.7s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+.session-complete__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.session-complete__tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--orange-primary);
+}
+
+.session-complete__title {
+  font-family: var(--font-main);
+  font-size: 52px;
+  font-weight: 300;
+  color: var(--text-primary);
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+.session-complete__rounds {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 260px;
+}
+
+.session-complete__round {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+}
+
+.session-complete__round-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.session-complete__round-time {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--text-primary);
+}
+
+.session-complete__stats {
+  display: flex;
+  gap: 48px;
+}
+
+.session-complete__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.session-complete__stat-value {
+  font-family: var(--font-mono);
+  font-size: 30px;
+  font-weight: 300;
+  color: var(--orange-primary);
+}
+
+.session-complete__stat-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.session-complete__actions {
+  display: flex;
+  gap: 12px;
+}
+
+.session-complete__btn {
+  padding: 13px 36px;
+  border-radius: 40px;
+  border: 1px solid var(--border-hover);
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-main);
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.session-complete__btn:hover {
+  border-color: var(--text-secondary);
+  color: var(--text-primary);
+}
+
+.session-complete__btn--primary {
+  border-color: var(--orange-primary);
+  color: var(--orange-primary);
+}
+
+.session-complete__btn--primary:hover {
+  background: var(--orange-primary);
+  color: #0a0a0a;
+}
