@@ -1,0 +1,136 @@
+.stats-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 48px 60px;
+  box-sizing: border-box;
+  gap: 56px;
+}
+
+/* ── Top bar ── */
+.stats-page__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+}
+
+.stats-page__title {
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Period switcher */
+.stats-page__period {
+  display: flex;
+  gap: 4px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 4px;
+}
+
+.stats-page__period-btn {
+  padding: 5px 14px;
+  border-radius: 16px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.stats-page__period-btn--active {
+  background: var(--border-hover);
+  color: var(--text-primary);
+}
+
+.stats-page__period-btn:hover:not(.stats-page__period-btn--active) {
+  color: var(--text-primary);
+}
+
+/* ── Sections ── */
+.stats-page__section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.stats-page__section-title {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ── Metrics row ── */
+.stats-page__metrics {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ── Activity legend ── */
+.stats-page__legend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.stats-page__legend-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  margin: 0 4px;
+}
+
+/* ── Chart header ── */
+.stats-page__chart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ── Tabs ── */
+.stats-page__tabs {
+  display: flex;
+  gap: 4px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 4px;
+}
+
+.stats-page__tab {
+  padding: 5px 16px;
+  border-radius: 16px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.stats-page__tab--active {
+  background: var(--border-hover);
+  color: var(--orange-primary);
+}
+
+.stats-page__tab:hover:not(.stats-page__tab--active) {
+  color: var(--text-primary);
+}
