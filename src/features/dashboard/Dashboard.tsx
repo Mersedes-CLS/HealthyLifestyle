@@ -27,7 +27,7 @@ const modules: ModuleInfo[] = [
     description: 'Cold plunge timer, session log, streaks',
     emoji: '\uD83E\uDDCA',
     path: '/cold',
-    status: 'coming-soon',
+    status: 'active',
   },
   {
     id: 'training',
@@ -51,7 +51,7 @@ const modules: ModuleInfo[] = [
     description: 'Overall dashboard with all metrics',
     emoji: '\uD83D\uDCCA',
     path: '/stats',
-    status: 'coming-soon',
+    status: 'active',
   },
 ]
 
