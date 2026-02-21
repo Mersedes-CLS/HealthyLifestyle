@@ -1,3 +1,4 @@
+import { useLanguage } from '@/shared/i18n/LanguageContext'
 import type { ColdSession } from '../types/cold'
 import './ColdLog.css'
 
@@ -20,13 +21,13 @@ function formatTime(iso: string): string {
   })
 }
 
-function getDateLabel(iso: string): string {
+function getDateLabel(iso: string, t: (key: string) => string): string {
   const sessionDay = iso.slice(0, 10)
   const today = new Date().toISOString().slice(0, 10)
   const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10)
 
-  if (sessionDay === today) return 'Today'
-  if (sessionDay === yesterday) return 'Yesterday'
+  if (sessionDay === today) return t('today')
+  if (sessionDay === yesterday) return t('yesterday')
   return new Date(iso).toLocaleDateString('en-US', {
     weekday: 'short',
     month: 'short',
@@ -39,10 +40,10 @@ interface Group {
   sessions: ColdSession[]
 }
 
-function groupByDay(sessions: ColdSession[]): Group[] {
+function groupByDay(sessions: ColdSession[], t: (key: string) => string): Group[] {
   const map = new Map<string, Group>()
   for (const s of sessions) {
-    const label = getDateLabel(s.date)
+    const label = getDateLabel(s.date, t)
     if (!map.has(label)) map.set(label, { label, sessions: [] })
     map.get(label)!.sessions.push(s)
   }
@@ -50,19 +51,21 @@ function groupByDay(sessions: ColdSession[]): Group[] {
 }
 
 export function ColdLog({ sessions }: Props) {
+  const { t } = useLanguage()
+
   if (sessions.length === 0) {
     return (
       <div className="cold-log cold-log--empty">
-        <span className="cold-log__empty-text">No sessions yet</span>
+        <span className="cold-log__empty-text">{t('noSessionsYet')}</span>
       </div>
     )
   }
 
-  const groups = groupByDay(sessions.slice(0, 20))
+  const groups = groupByDay(sessions.slice(0, 20), t)
 
   return (
     <div className="cold-log">
-      <span className="cold-log__heading">Sessions</span>
+      <span className="cold-log__heading">{t('sessions')}</span>
       <div className="cold-log__groups">
         {groups.map(group => (
           <div key={group.label} className="cold-log__group">

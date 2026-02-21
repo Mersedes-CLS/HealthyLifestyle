@@ -1,6 +1,13 @@
 .header {
+  position: relative;
   text-align: center;
   padding: 60px 0 48px;
+}
+
+.header__lang-switcher {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .header__title {

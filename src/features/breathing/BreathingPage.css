@@ -37,36 +37,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 40px;
-}
-
-/* ── Bottom slot (hint / start button) ── */
-.breathing-page__bottom {
-  height: 52px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.breathing-page__start-btn {
-  padding: 14px 52px;
-  border-radius: 40px;
-  border: 1px solid var(--orange-primary);
-  background: transparent;
-  color: var(--orange-primary);
-  font-family: var(--font-main);
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background 0.3s ease, color 0.3s ease;
-  animation: fadeUp 0.5s cubic-bezier(0.23, 1, 0.32, 1) both;
-}
-
-.breathing-page__start-btn:hover {
-  background: var(--orange-primary);
-  color: #0a0a0a;
 }
 
 .breathing-page__hint {

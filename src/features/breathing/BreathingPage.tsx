@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { PageTransition } from '@/shared/ui/PageTransition/PageTransition'
 import { BackButton } from '@/shared/ui/BackButton/BackButton'
+import { useLanguage } from '@/shared/i18n/LanguageContext'
 import { useBreathingSession } from './hooks/useBreathingSession'
 import { BreathingCircle } from './components/BreathingCircle'
 import { RoundIndicator } from './components/RoundIndicator'
@@ -11,6 +12,7 @@ import './BreathingPage.css'
 
 export function BreathingPage() {
   const navigate = useNavigate()
+  const { t } = useLanguage()
   const {
     phase,
     round,
@@ -53,7 +55,7 @@ export function BreathingPage() {
           <BackButton />
           <RoundIndicator current={round} total={totalRounds} phase={phase} />
           <div className="breathing-page__top-end">
-            <span className="breathing-page__preset-label">{WIM_HOF.name}</span>
+            <span className="breathing-page__preset-label">{t('wimHofMethod')}</span>
           </div>
         </div>
 
@@ -73,20 +75,15 @@ export function BreathingPage() {
                 holdSeconds={holdSeconds}
                 recoverySeconds={recoverySeconds}
                 onClick={endHold}
+                onStart={start}
+                startLabel={t('start')}
               />
 
-              <div className="breathing-page__bottom">
-                {phase === 'idle' && (
-                  <button className="breathing-page__start-btn" onClick={start}>
-                    Start
-                  </button>
-                )}
-                {phase === 'hold' && (
-                  <span className="breathing-page__hint">
-                    tap · space to release
-                  </span>
-                )}
-              </div>
+              {phase === 'hold' && (
+                <span className="breathing-page__hint">
+                  {t('tapSpaceToRelease')}
+                </span>
+              )}
             </>
           )}
         </div>

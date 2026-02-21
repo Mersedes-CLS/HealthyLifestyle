@@ -8,6 +8,8 @@ interface Props {
   holdSeconds: number
   recoverySeconds: number
   onClick: () => void
+  onStart?: () => void
+  startLabel?: string
 }
 
 function getPhaseLabel(phase: BreathingPhase): string {
@@ -54,22 +56,38 @@ export function BreathingCircle({
   holdSeconds,
   recoverySeconds,
   onClick,
+  onStart,
+  startLabel,
 }: Props) {
   const label = getPhaseLabel(phase)
   const counter = getCounter(phase, breathCount, breathsPerRound, holdSeconds, recoverySeconds)
 
+  function handleClick() {
+    if (phase === 'idle' && onStart) onStart()
+    else if (phase === 'hold') onClick()
+  }
+
   return (
     <div
-      className="breathing-circle"
+      className="breathing-orb"
       data-phase={phase}
-      onClick={phase === 'hold' ? onClick : undefined}
-      style={{ cursor: phase === 'hold' ? 'pointer' : 'default' }}
+      onClick={phase === 'hold' || phase === 'idle' ? handleClick : undefined}
+      style={{ cursor: phase === 'hold' || phase === 'idle' ? 'pointer' : 'default' }}
     >
-      <div className="breathing-circle__ring breathing-circle__ring--outer" />
-      <div className="breathing-circle__ring breathing-circle__ring--mid" />
-      <div className="breathing-circle__core">
-        {label && <span className="breathing-circle__label">{label}</span>}
-        {counter && <span className="breathing-circle__counter">{counter}</span>}
+      <div className="breathing-orb__halo" />
+      <div className="breathing-orb__glow--outer" />
+      <div className="breathing-orb__glow--inner" />
+      <div className="breathing-orb__core">
+        {phase === 'idle' ? (
+          <button className="breathing-orb__start" onClick={onStart} type="button">
+            {startLabel ?? 'start'}
+          </button>
+        ) : (
+          <>
+            {label && <span className="breathing-orb__label">{label}</span>}
+            {counter && <span className="breathing-orb__counter">{counter}</span>}
+          </>
+        )}
       </div>
     </div>
   )

@@ -6,11 +6,147 @@
   height: 100%;
   pointer-events: none;
   z-index: 0;
+  background:
+    /* Top orange glow - much brighter */
+    radial-gradient(
+      ellipse 900px 400px at 50% -10%,
+      rgba(232, 116, 42, 0.15) 0%,
+      rgba(232, 116, 42, 0.08) 30%,
+      transparent 70%
+    ),
+    /* Bottom center glow - intense */
+    radial-gradient(
+      ellipse 700px 500px at 50% 115%,
+      rgba(232, 116, 42, 0.25) 0%,
+      rgba(232, 116, 42, 0.12) 40%,
+      transparent 75%
+    ),
+    /* Left accent - brighter */
+    radial-gradient(
+      circle 500px at -5% 50%,
+      rgba(232, 116, 42, 0.12) 0%,
+      rgba(232, 116, 42, 0.06) 40%,
+      transparent 70%
+    ),
+    /* Right accent - brighter */
+    radial-gradient(
+      circle 500px at 105% 50%,
+      rgba(232, 116, 42, 0.12) 0%,
+      rgba(232, 116, 42, 0.06) 40%,
+      transparent 70%
+    ),
+    /* Overall orange warmth */
+    linear-gradient(
+      180deg,
+      rgba(232, 116, 42, 0.06) 0%,
+      transparent 35%,
+      transparent 65%,
+      rgba(232, 116, 42, 0.08) 100%
+    );
+  animation: ambientPulse 8s ease-in-out infinite;
+}
+
+@keyframes ambientPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+/* Animated floating orbs for depth */
+.ambient-orbs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    /* Orb 1 - top left, slow drift - much brighter */
+    radial-gradient(
+      circle 450px at 20% 30%,
+      rgba(232, 116, 42, 0.18) 0%,
+      rgba(232, 116, 42, 0.08) 40%,
+      transparent 75%
+    ),
+    /* Orb 2 - bottom right, slower drift - much brighter */
+    radial-gradient(
+      circle 500px at 80% 70%,
+      rgba(232, 116, 42, 0.16) 0%,
+      rgba(232, 116, 42, 0.07) 40%,
+      transparent 75%
+    ),
+    /* Orb 3 - center accent */
+    radial-gradient(
+      circle 350px at 50% 50%,
+      rgba(232, 116, 42, 0.08) 0%,
+      transparent 70%
+    );
+  animation: orbsFloat 20s ease-in-out infinite;
+}
+
+@keyframes orbsFloat {
+  0%, 100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  25% {
+    transform: translate(40px, -30px);
+    opacity: 0.95;
+  }
+  50% {
+    transform: translate(-30px, 40px);
+    opacity: 0.9;
+  }
+  75% {
+    transform: translate(30px, 25px);
+    opacity: 0.98;
+  }
+}
+
+/* Subtle vignette for depth with orange tint */
+.vignette {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
   background: radial-gradient(
-    ellipse 600px 400px at 50% 120%,
-    var(--orange-dim) 0%,
-    transparent 70%
+    ellipse at center,
+    transparent 0%,
+    transparent 55%,
+    rgba(232, 116, 42, 0.05) 85%,
+    rgba(0, 0, 0, 0.4) 100%
   );
+}
+
+/* Minimal orange for procedure pages */
+.ambient-glow--minimal {
+  background:
+    /* Very subtle bottom glow only */
+    radial-gradient(
+      ellipse 600px 300px at 50% 120%,
+      rgba(232, 116, 42, 0.04) 0%,
+      transparent 70%
+    ) !important;
+  animation: none !important;
+}
+
+.ambient-orbs--minimal {
+  background:
+    /* Single tiny orb */
+    radial-gradient(
+      circle 250px at 50% 80%,
+      rgba(232, 116, 42, 0.03) 0%,
+      transparent 70%
+    ) !important;
+  animation: none !important;
+  opacity: 0.5;
 }
 
 .grain {

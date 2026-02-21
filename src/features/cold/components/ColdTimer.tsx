@@ -1,3 +1,4 @@
+import { useLanguage } from '@/shared/i18n/LanguageContext'
 import './ColdTimer.css'
 
 interface Props {
@@ -14,6 +15,8 @@ function formatTime(seconds: number): string {
 }
 
 export function ColdTimer({ elapsed, isRunning, onStart, onStop }: Props) {
+  const { t } = useLanguage()
+
   return (
     <div className="cold-timer">
       <div className="cold-timer__circle" data-running={isRunning}>
@@ -22,7 +25,7 @@ export function ColdTimer({ elapsed, isRunning, onStart, onStop }: Props) {
         <div className="cold-timer__face">
           <span className="cold-timer__time">{formatTime(elapsed)}</span>
           {!isRunning && elapsed === 0 && (
-            <span className="cold-timer__hint">cold exposure</span>
+            <span className="cold-timer__hint">{t('coldExposureTitle')}</span>
           )}
         </div>
       </div>
@@ -31,7 +34,7 @@ export function ColdTimer({ elapsed, isRunning, onStart, onStop }: Props) {
         className={`cold-timer__btn ${isRunning ? 'cold-timer__btn--stop' : ''}`}
         onClick={isRunning ? onStop : onStart}
       >
-        {isRunning ? 'Stop' : 'Start'}
+        {isRunning ? t('stop') : t('start')}
       </button>
     </div>
   )
